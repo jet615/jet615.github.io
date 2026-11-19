@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio | Desarrollo de software</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%238b5cf6'/><text x='50' y='70' font-size='62' font-weight='bold' text-anchor='middle' fill='white' font-family='sans-serif'>J</text></svg>"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070a1c;--ink:#eaeefc;--muted:#9aa4c7;
+  --blue:#3b82f6;--sky:#38bdf8;--violet:#8b5cf6;--pink:#d946ef;--orange:#ff9f1c;
+  --glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark;scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:400 1.05rem/1.6 "IBM Plex Sans",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.08;margin:0}
+p{max-width:62ch}
+a{color:inherit}
+main{position:relative;max-width:1040px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+
+/* ---------- Fondo: esferas difuminadas que flotan ---------- */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;
+  background:radial-gradient(70rem 50rem at 50% -10%,#16225a 0%,transparent 60%),linear-gradient(180deg,#0a1030,#070a1c 60%)}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9;animation:float 14s ease-in-out infinite}
+.o1{width:300px;height:300px;top:-60px;right:8%;background:radial-gradient(circle at 30% 28%,#7dd3fc,#2563eb 60%,#1e3a8a);animation-delay:0s}
+.o2{width:170px;height:170px;top:38%;left:-40px;background:radial-gradient(circle at 30% 28%,#e9d5ff,#8b5cf6 62%,#4c1d95);animation-delay:-4s}
+.o3{width:240px;height:240px;bottom:6%;right:-60px;background:radial-gradient(circle at 30% 28%,#c4b5fd,#7c3aed 60%,#3b0764);filter:blur(10px);animation-delay:-8s}
+.o4{width:200px;height:200px;bottom:-40px;left:20%;background:radial-gradient(circle at 30% 28%,#7dd3fc,#1d4ed8 62%,#172554);filter:blur(6px);animation-delay:-2s}
+.o5{width:90px;height:90px;top:22%;left:46%;background:radial-gradient(circle at 30% 28%,#fed7aa,#ff9f1c 65%,#9a3412);filter:blur(3px);opacity:.75;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate3d(0,0,0)}33%{transform:translate3d(18px,-26px,0)}66%{transform:translate3d(-16px,14px,0)}}
+
+/* ---------- Barra superior ---------- */
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding:.7rem 1rem;margin-bottom:2.5rem;
+  border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo{font:800 1.15rem "Bricolage Grotesque",sans-serif;letter-spacing:.02em}
+.logo b{color:var(--orange)}
+.switch{display:inline-flex;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.25)}
+.switch button{font:inherit;font-size:.92rem;padding:.45rem 1rem;border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;transition:background .3s,transform .2s,box-shadow .3s}
+.switch button:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+.switch button[aria-pressed="true"]{background:linear-gradient(90deg,var(--blue),var(--violet));box-shadow:0 6px 22px -6px rgba(139,92,246,.9)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+/* ---------- Hero ---------- */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;min-height:56vh;margin-bottom:3rem}
+.hola{display:inline-block;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem}
+h1{font-size:clamp(2.3rem,6vw,4rem);font-weight:800;background:linear-gradient(90deg,#fff 10%,#a5b4fc 55%,#d8b4fe);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:transform .4s}
+h1:hover{transform:translateX(6px)}
+.lead{color:var(--muted);margin:1.1rem 0 1.6rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{position:relative;display:inline-block;padding:.75rem 1.4rem;border-radius:999px;font-weight:500;text-decoration:none;border:1px solid var(--line);overflow:hidden;transition:transform .25s,box-shadow .3s,border-color .3s}
+.btn.main{background:linear-gradient(90deg,var(--blue),var(--violet));border-color:transparent}
+.btn.alt{background:var(--glass);backdrop-filter:blur(8px)}
+.btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 16px 34px -12px var(--violet);border-color:var(--orange)}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:140%}
+
+.visual{position:relative;aspect-ratio:1;max-width:340px;margin-left:auto;width:100%;display:grid;place-items:center}
+.rays{position:absolute;inset:6%;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(139,92,246,.95) 0 3deg,transparent 3deg 12deg);
+  -webkit-mask:radial-gradient(circle,transparent 38%,#000 40%,#000 70%,transparent 72%);mask:radial-gradient(circle,transparent 38%,#000 40%,#000 70%,transparent 72%);
+  animation:spin 28s linear infinite}
+.glass-card{position:relative;width:80%;padding:1.2rem 1.3rem;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.03));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 60px -20px rgba(0,0,0,.7);transition:transform .3s}
+.glass-card:hover{transform:rotate(-2deg) scale(1.04)}
+.code{font:500 .74rem/1.7 ui-monospace,Menlo,Consolas,monospace;color:#c7d2fe;white-space:pre}
+.code .k{color:#f0abfc}.code .s{color:#7dd3fc}.code .o{color:var(--orange)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Estadísticas con esquinas ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem}
+.stat{position:relative;padding:1.3rem .5rem;text-align:center;background:var(--glass);backdrop-filter:blur(10px);transition:transform .3s,background .3s}
+.stat::before,.stat::after{content:"";position:absolute;width:26px;height:26px;border:3px solid var(--violet);transition:all .3s}
+.stat::before{top:0;left:0;border-right:0;border-bottom:0}
+.stat::after{right:0;bottom:0;border-left:0;border-top:0}
+.stat:hover{transform:translateY(-6px);background:rgba(139,92,246,.14)}
+.stat:hover::before,.stat:hover::after{width:100%;height:100%;border-color:var(--orange)}
+.stat strong{display:block;font:800 2.1rem "Bricolage Grotesque",sans-serif}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* ---------- Secciones ---------- */
+.sec{text-align:center;margin:4rem 0 1.8rem}
+.sec i{display:block;width:12px;height:12px;margin:0 auto .8rem;border-radius:50%;background:var(--violet);box-shadow:0 0 0 6px rgba(139,92,246,.25);animation:pulse 2.4s ease-in-out infinite}
+.sec small{display:block;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+h2{font-size:clamp(1.6rem,4vw,2.2rem)}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(139,92,246,0)}}
+
+.diagram{padding:1rem;border:1px solid var(--line);border-radius:18px;background:var(--glass);backdrop-filter:blur(12px);transition:box-shadow .4s,border-color .4s,transform .4s}
+.diagram:hover{border-color:var(--violet);box-shadow:0 22px 50px -18px var(--violet);transform:translateY(-4px)}
+.diagram svg{width:100%;height:auto;display:block}
+.node{fill:#0d1233;stroke:url(#g);stroke-width:2;transition:transform .3s}
+.t{font:500 14px "IBM Plex Sans",sans-serif;fill:#eaeefc;text-anchor:middle}
+.edge{stroke:url(#g);stroke-width:2.5;fill:none;stroke-dasharray:6 6;animation:flow 1.2s linear infinite}
+.plan{stroke:var(--orange);stroke-width:2.5;stroke-dasharray:7 5;fill:none;animation:flow 2s linear infinite}
+.tp{font:500 13px "IBM Plex Sans",sans-serif;fill:#fdba74;text-anchor:middle}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.legend{font-size:.9rem;color:var(--muted);margin:.75rem 0 0}
+
+/* ---------- Proyectos ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.1rem}
+.card{--c:var(--sky);position:relative;display:flex;flex-direction:column;gap:.5rem;padding:1.4rem;border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.025));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);overflow:hidden;
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .2s,border-color .3s,box-shadow .3s}
+.card:nth-child(4n+2){--c:var(--violet)}.card:nth-child(4n+3){--c:var(--orange)}.card:nth-child(4n+4){--c:var(--pink)}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),var(--c),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none;mix-blend-mode:soft-light}
+.card:hover{border-color:var(--c);box-shadow:0 26px 50px -20px var(--c)}
+.card:hover::before{opacity:.55}
+.card .n{font:800 .8rem "Bricolage Grotesque",sans-serif;color:var(--c);letter-spacing:.15em}
+.card h3{font-size:1.25rem;transition:color .3s}
+.card:hover h3{color:var(--c)}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
+.card .state{position:absolute;top:1.1rem;right:1.1rem}
+.state{font-size:.78rem;font-weight:500;padding:.1rem .7rem;border-radius:999px;background:linear-gradient(90deg,#22d3ee,#3b82f6);color:#04101f;white-space:nowrap}
+.state.meta{background:transparent;color:#fdba74;border:1.5px dashed var(--orange)}
+.tags{margin-top:auto;padding-top:.5rem}
+.tag{display:inline-block;margin:.3rem .35rem 0 0;padding:.1rem .65rem;font-size:.85rem;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.05);transition:transform .2s,color .2s,border-color .2s,background .2s}
+.tag:hover{transform:translateY(-3px) scale(1.06);color:var(--c);border-color:var(--c);background:rgba(255,255,255,.12)}
+
+/* ---------- Cursos ---------- */
+.cursos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem}
+.curso{--c:var(--sky);display:flex;flex-direction:column;gap:.1rem;padding:.9rem 1.1rem;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;background:var(--glass);backdrop-filter:blur(8px);transition:transform .25s,box-shadow .3s,background .3s}
+.curso:nth-child(4n+2){--c:var(--violet)}.curso:nth-child(4n+3){--c:var(--orange)}.curso:nth-child(4n+4){--c:var(--pink)}
+.curso b{font-weight:500;transition:color .25s}
+.curso span{font-size:.85rem;color:var(--muted)}
+.curso:hover{transform:translateX(8px) scale(1.02);background:rgba(255,255,255,.1);box-shadow:-10px 12px 30px -14px var(--c)}
+.curso:hover b{color:var(--c)}
+.nota{text-align:center;font-size:.92rem;color:var(--muted);margin:1rem auto 0}
+
+/* ---------- Contacto ---------- */
+.contact{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap}
+.contact a{padding:.7rem 1.5rem;border:1px solid var(--line);border-radius:999px;background:var(--glass);backdrop-filter:blur(8px);text-decoration:none;font-weight:500;transition:transform .25s,background .3s,border-color .3s,box-shadow .3s}
+.contact a:hover{transform:translateY(-5px) rotate(-1.5deg);background:linear-gradient(90deg,var(--blue),var(--violet));border-color:transparent;box-shadow:0 16px 30px -12px var(--violet)}
+
+/* ---------- Aparición al hacer scroll ---------- */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:760px){.hero{grid-template-columns:1fr}.visual{margin:0 auto;max-width:280px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div><div class="orb o5"></div>
+</div>
+
+<main>
+  <header class="top">
+    <span class="logo"><b></b>JET</span>
+    <div class="switch" role="group" aria-label="Versión del portafolio">
+      <button id="b1" aria-pressed="true">Original (3 oct 2026)</button>
+      <button id="b2" aria-pressed="false">Versión 2: especialización</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="hola">Hola, soy JET</span>
+      <h1 id="titulo"></h1>
+      <p class="lead" id="intro"></p>
+      <div class="btns">
+        <a class="btn main" href="#proyectos">Ver proyectos</a>
+        <a class="btn alt" href="#contacto">Contáctame</a>
+      </div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="rays"></div>
+      <div class="glass-card"><div class="code"><span class="k">const</span> yo = {
+  carrera: <span class="s">"Desarrollo de Software"</span>,
+  foco: <span class="s" id="foco"></span>,
+  nube: <span class="s">"Azure"</span>,
+  <span class="o">listo</span>: <span class="k">true</span>
+};</div></div>
+    </div>
+  </section>
+
+  <section class="stats rv" id="stats"></section>
+
+  <div class="sec rv"><i></i><small>Arquitectura</small><h2>Cómo encajan mis proyectos</h2></div>
+  <div class="diagram rv">
+    <svg id="diagrama" viewBox="0 0 560 230" role="img" aria-label="Arquitectura de mis proyectos"></svg>
+    <p class="legend" id="leyenda"></p>
+  </div>
+
+  <div class="sec rv" id="proyectos"><i></i><small>Portafolio</small><h2 id="h-proy"></h2></div>
+  <div class="grid" id="lista"></div>
+
+  <div class="sec rv"><i></i><small>Formación</small><h2 id="h-cur"></h2></div>
+  <div class="cursos" id="cursos"></div>
+  <p class="nota" id="nota-cur"></p>
+
+  <div class="sec rv" id="contacto"><i></i><small>Hablemos</small><h2>Contacto</h2></div>
+  <nav class="contact rv">
+    <a href="https://github.com/jet615" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:jetantunezromero@gmail.com">jetantunezromero@gmail.com</a>
+    <a href="https://wa.me/51960625459" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="tel:+51960625459">960 625 459</a>
+  </nav>
+</main>
+
+<script>
+document.documentElement.classList.add("js");
+/* ====== EDITA AQUÍ TUS DATOS ====== */
+const V = {
+  1: {
+    titulo: "Desarrollo de software con Node.js, PHP y Azure",
+    intro: "Esto es lo que sé hacer hoy: aplicaciones web con bases de datos y laboratorios de despliegue en la nube.",
+    foco: "Node.js · PHP · Azure",
+    seccion: "Lo que he construido",
+    leyenda: "Línea animada: lo que ya funciona.",
+    plan: false,
+    secCursos: "Cursos de mi carrera que respaldan estos proyectos",
+    notaCursos: "Cursos aprobados de Desarrollo de Software.",
+    cursos: [
+      ["Database Design and Programming with SQL (Oracle)","Bases de datos"],
+      ["Desarrollo de Software I","Programación"],
+      ["Fundamentos de Programación Web","Desarrollo web"],
+      ["Lenguaje de Programación I","Programación"],
+      ["Análisis y Diseño de Sistemas","Diseño de sistemas"],
+      ["Ingeniería del Software","Procesos de software"],
+      ["Redes de Computadoras","Redes"],
+      ["Calidad del Software","Calidad y pruebas"]
+    ],
+    proyectos: [
+      {n:"Tienda de Productos", d:"Aplicación web con inicio de sesión, usuario administrador y tablas de categorías, productos y usuarios. Conecta a dos bases de datos al mismo tiempo.", t:["Express","EJS","TypeScript","Azure SQL","PostgreSQL"], e:"Hecho"},
+      {n:"Laboratorio de despliegue en Azure", d:"Máquina virtual Ubuntu con Apache, PHP y MariaDB, donde publiqué un proyecto Laravel accesible desde el navegador.", t:["Azure VM","Linux","Apache","PHP","Laravel"], e:"Hecho"},
+      {n:"Galaxia 3D", d:"Página interactiva con fotos en órbita, hecha para una fecha especial y adaptada para celular.", t:["HTML","JavaScript","Three.js"], e:"Hecho"},
+      {n:"ZENPLUS OS: módulo CRM", d:"Aporte al módulo de visitas y requerimientos de una plataforma desarrollada por células de trabajo.", t:["TypeScript","API","Git","GitHub"], e:"Hecho"},
+      {n:"Microsoft Azure AZ-900 (curso)", d:"Tres rutas completadas en Microsoft Learn: conceptos de nube, arquitectura y servicios, administración y gobierno.", t:["Azure","Nube"], e:"Hecho"}
+    ]
+  },
+  2: {
+    titulo: "Backend y nube: de aplicaciones que funcionan a servicios en producción",
+    intro: "Aquí está hacia dónde voy: APIs bien diseñadas, bases de datos sólidas y aplicaciones publicadas en Azure.",
+    foco: "Backend · Nube",
+    seccion: "Lo que voy a construir",
+    leyenda: "Línea animada: ya existe. Línea naranja discontinua: meta de esta versión.",
+    plan: true,
+    secCursos: "Cursos en marcha que alimentan esta especialización",
+    notaCursos: "Cursos de Desarrollo de Software que estoy llevando ahora.",
+    cursos: [
+      ["Desarrollo de Aplicaciones Web","Desarrollo web"],
+      ["Desarrollo de Software II","Programación"],
+      ["Lenguaje de Programación II","Programación"],
+      ["Seminario de Complementación Práctica II","Práctica"]
+    ],
+    proyectos: [
+      {n:"Tienda de Productos 2.0", d:"La misma tienda con API REST, roles de usuario, validaciones y pruebas, publicada en una URL pública.", t:["API REST","Express","TypeScript","Azure App Service"], e:"En camino"},
+      {n:"Cuaderno de SQL", d:"Ejercicios propios escritos a mano: consultas, joins, vistas y procedimientos almacenados, con el diseño de cada base de datos.", t:["SQL Server","SSMS","T-SQL"], e:"En curso"},
+      {n:"Despliegue documentado", d:"Guía paso a paso para publicar la tienda en Azure, con capturas y un README claro para quien quiera repetirla.", t:["Azure","Documentación","Git"], e:"En camino"},
+      {n:"Siguiente certificación", d:"Dar el paso de AZ-900 a una certificación de desarrollo en Azure.", t:["Azure","Certificación"], e:"Meta"}
+    ]
+  }
+};
+/* =================================== */
+
+const $=id=>document.getElementById(id);
+
+function diagrama(plan){
+  const n=(x,y,w,txt)=>`<rect class="node" x="${x}" y="${y}" width="${w}" height="52" rx="10"/><text class="t" x="${x+w/2}" y="${y+31}">${txt}</text>`;
+  return `
+  <defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="560" y2="0"><stop offset="0" stop-color="#38bdf8"/><stop offset=".5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#d946ef"/></linearGradient></defs>
+  <path class="edge" d="M130 106 H190"/>
+  <path class="edge" d="M330 96 L400 56"/>
+  <path class="edge" d="M330 116 L400 156"/>
+  ${n(20,80,110,"Navegador")}
+  ${n(190,80,140,"Express + TS")}
+  ${n(400,30,140,"Azure SQL")}
+  ${n(400,130,140,"PostgreSQL")}
+  ${plan?`<rect class="plan" x="170" y="48" width="180" height="130" rx="14"/>
+  <text class="tp" x="260" y="42">Azure App Service</text>
+  <text class="tp" x="260" y="198">API REST + roles</text>`:""}`;
+}
+
+function contar(el){
+  const fin=+el.dataset.n, suf=el.dataset.s||"";
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches){el.textContent=fin+suf;return}
+  const t0=performance.now(), dur=900;
+  (function paso(t){
+    const k=Math.min((t-t0)/dur,1);
+    el.textContent=Math.round(fin*(1-Math.pow(1-k,3)))+suf;
+    if(k<1) requestAnimationFrame(paso);
+  })(t0);
+}
+
+const io="IntersectionObserver" in window ? new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); e.target.querySelectorAll("[data-n]").forEach(contar); io.unobserve(e.target);} });
+},{threshold:.15}) : null;
+function observar(){
+  document.querySelectorAll(".rv:not(.in)").forEach(el=>{
+    if(io) io.observe(el); else { el.classList.add("in"); el.querySelectorAll("[data-n]").forEach(contar); }
+  });
+}
+
+function efectoTarjetas(){
+  document.querySelectorAll(".card").forEach(c=>{
+    c.addEventListener("mousemove",e=>{
+      const r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      c.style.setProperty("--ry",((x-.5)*8).toFixed(2)+"deg");
+      c.style.setProperty("--rx",((.5-y)*8).toFixed(2)+"deg");
+      c.style.setProperty("--mx",(x*100)+"%");
+      c.style.setProperty("--my",(y*100)+"%");
+    });
+    c.addEventListener("mouseleave",()=>{c.style.setProperty("--rx","0deg");c.style.setProperty("--ry","0deg")});
+  });
+}
+
+function pintar(v){
+  const d=V[v];
+  $("titulo").textContent=d.titulo;
+  $("intro").textContent=d.intro;
+  $("foco").textContent='"'+d.foco+'"';
+  $("h-proy").textContent=d.seccion;
+  $("leyenda").textContent=d.leyenda;
+  $("diagrama").innerHTML=diagrama(d.plan);
+  $("h-cur").textContent=d.secCursos;
+  $("nota-cur").textContent=d.notaCursos;
+
+  $("lista").innerHTML=d.proyectos.map((p,i)=>`
+    <article class="card rv">
+      <span class="n">0${i+1}</span>
+      <span class="state ${p.e==="Hecho"?"":"meta"}">${p.e}</span>
+      <h3>${p.n}</h3>
+      <p>${p.d}</p>
+      <div class="tags">${p.t.map(x=>`<span class="tag">${x}</span>`).join("")}</div>
+    </article>`).join("");
+
+  $("cursos").innerHTML=d.cursos.map(c=>`<div class="curso rv"><b>${c[0]}</b><span>${c[1]}</span></div>`).join("");
+
+  const techs=new Set(d.proyectos.flatMap(p=>p.t)).size;
+  const st=[[d.proyectos.length,"","Proyectos"],[d.cursos.length,"","Cursos"],[techs,"","Tecnologías"],[2,"","Bases de datos"]];
+  $("stats").innerHTML=st.map(s=>`<div class="stat"><strong data-n="${s[0]}" data-s="${s[1]}">0</strong><span>${s[2]}</span></div>`).join("");
+  $("stats").classList.remove("in");
+
+  $("b1").setAttribute("aria-pressed",v===1);
+  $("b2").setAttribute("aria-pressed",v===2);
+  document.title=(v===1?"Portafolio original":"Portafolio versión 2")+" | Desarrollo de software";
+  efectoTarjetas();
+  observar();
+}
+$("b1").onclick=()=>pintar(1);
+$("b2").onclick=()=>pintar(2);
+pintar(1);
+</script>
+</body>
+</html>
